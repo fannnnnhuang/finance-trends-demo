@@ -33,7 +33,8 @@ interest_over_time_df = pytrends.interest_over_time()
 trends = interest_over_time_df.tail(1).to_dict('records')[0]
 
 # 抓取 Google 熱門搜尋趨勢（前 10 熱門關鍵字及其熱度）
-trending_df = pytrends.trending_searches(pn='taiwan')
+pytrends = TrendReq(hl='en-US', tz=0)
+trending_df = pytrends.trending_searches(pn='global')
 top_keywords = trending_df[0].head(10).tolist()
 
 # 建立 payload 並取得熱度
