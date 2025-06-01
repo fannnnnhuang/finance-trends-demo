@@ -1,8 +1,11 @@
 import json
 from datetime import datetime
-import pytz
-import requests
-from pytrends.request import TrendReq
+import pytz 
+import requests 
+from pytrends.request import TrendReq 
+from datetime import datetime
+with open("log.txt", "a") as f:
+    f.write(f"Crawler ran at {datetime.utcnow().isoformat()} UTC\n")
 
 # 設定時區
 tw_tz = pytz.timezone("Asia/Taipei")

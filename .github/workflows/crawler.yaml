@@ -2,7 +2,7 @@ name: Run Crawler
 
 on:
   schedule:
-    - cron: '5 * * * *'  # 每天 UTC 0 點執行
+    - cron: '15 * * * *'  # 每天 UTC 0 點執行
   workflow_dispatch:       # 允許手動執行
 
 jobs:
