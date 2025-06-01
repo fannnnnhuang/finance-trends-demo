@@ -32,12 +32,27 @@ pytrends.build_payload(kw_list=['台股', '匯率', '投資'])
 interest_over_time_df = pytrends.interest_over_time()
 trends = interest_over_time_df.tail(1).to_dict('records')[0]
 
+# 抓取 Google 熱門搜尋趨勢（前 10 熱門關鍵字及其熱度）
+trending_df = pytrends.trending_searches(pn='taiwan')
+top_keywords = trending_df[0].head(10).tolist()
+
+# 建立 payload 並取得熱度
+pytrends.build_payload(top_keywords, cat=0, timeframe='now 1-H', geo='TW')
+interest_df = pytrends.interest_over_time()
+
+# 取最新一筆資料（通常是每分鐘或每小時更新）
+latest_row = interest_df.tail(1).to_dict(orient='records')[0]
+
+# 整理成 { 關鍵字: 熱度 }
+trends_with_scores = {kw: latest_row.get(kw, 0) for kw in top_keywords}
+
 # 整合資料
 data = {
     "time": now,
     "taiex": taiex,
     "usd_rate": usd_rate,
-    "trends": trends
+    "trends": trends,
+    "top 10 trends": trends_with_scores
 }
 
 # 儲存成 JSON
