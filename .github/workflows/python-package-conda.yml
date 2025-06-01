@@ -1,0 +1,34 @@
+name: Run Crawler
+
+on: 
+  schedule:
+    - cron: '25 * * * *'  # 每天 UTC 0 點執行
+  workflow_dispatch:       # 允許手動執行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install pytz requests pytrends
+
+      - name: Run crawler
+        run: python crawler.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data.json
+          git commit -m "Update data.json"
+          git push
