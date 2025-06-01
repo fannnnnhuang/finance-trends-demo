@@ -4,8 +4,11 @@ import pytz
 import requests 
 from pytrends.request import TrendReq 
 from datetime import datetime
+tw_tz = pytz.timezone("Asia/Taipei")
+now = datetime.now(tw_tz).isoformat()
+
 with open("log.txt", "a") as f:
-    f.write(f"Crawler ran at {datetime.utcnow().isoformat()} UTC\n")
+    f.write(f"Crawler ran at {now} Taiwan Time\n")
 
 # 設定時區
 tw_tz = pytz.timezone("Asia/Taipei")
