@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>金融與趨勢資料展示</title>
+</head>
+<body>
+  <h1>最新資料：</h1>
+  <pre id="output">載入中...</pre>
+
+  <script>
+    fetch('data/data.json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        document.getElementById("output").textContent = "讀取失敗：" + error;
+      });
+  </script>
+</body>
+</html>
