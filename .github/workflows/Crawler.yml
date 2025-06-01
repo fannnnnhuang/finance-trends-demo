@@ -2,8 +2,11 @@ name: Run Crawler
 
 on: 
   schedule:
-    - cron: '25 * * * *'  # 每天 UTC 0 點執行
+    - cron: '40 * * * *'  
   workflow_dispatch:       # 允許手動執行
+
+permissions:
+  contents: write  # ✅ 允許這個 workflow 有寫入 repo 權限
 
 jobs:
   build:
@@ -12,11 +15,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          persist-credentials: true  # ✅ 這會自動使用 GITHUB_TOKEN
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
@@ -30,5 +36,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/data.json
-          git commit -m "Update data.json"
+          git commit -m "Auto update at $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push
