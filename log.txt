@@ -92,3 +92,4 @@ Crawler ran at 2025-06-08T16:32:18.916656+08:00 Taiwan Time
 Crawler ran at 2025-06-18T22:19:27.254210+08:00 Taiwan Time
 Crawler ran at 2025-06-19T22:18:20.934295+08:00 Taiwan Time
 Crawler ran at 2025-06-20T22:18:36.180550+08:00 Taiwan Time
+Crawler ran at 2025-06-21T22:17:46.656694+08:00 Taiwan Time
