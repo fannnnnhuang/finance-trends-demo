@@ -208,3 +208,4 @@ Crawler ran at 2026-01-04T22:18:12.285407+08:00 Taiwan Time
 Crawler ran at 2026-01-10T22:18:58.658773+08:00 Taiwan Time
 Crawler ran at 2026-01-11T22:19:07.843253+08:00 Taiwan Time
 Crawler ran at 2026-01-17T22:19:00.996464+08:00 Taiwan Time
+Crawler ran at 2026-01-18T22:18:34.732358+08:00 Taiwan Time
